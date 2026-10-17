@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>معمل مصر للتحاليل الطبية - شربين</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Cairo', sans-serif;
+    }
+    body {
+      background-color: #f1f8fc;
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(14, 165, 233, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 90% 70%, rgba(2, 132, 199, 0.08) 0%, transparent 40%);
+      color: #0f2d4a;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Header */
+    header {
+      padding: 24px 5% 10px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      z-index: 20;
+    }
+    .motto-box {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #08668f;
+      font-weight: 800;
+      font-size: 1.25rem;
+    }
+    .heart-icon {
+      color: #0284c7;
+      font-size: 1.7rem;
+      animation: beat 1.5s infinite;
+    }
+    @keyframes beat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.18); }
+    }
+
+    .brand-center {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      text-align: center;
+    }
+    .brand-logo {
+      width: 76px;
+      height: 76px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 4px 14px rgba(2, 132, 199, 0.2);
+      border: 2px solid #38bdf8;
+      background: #fff;
+    }
+    .brand-text h1 {
+      font-size: 1.7rem;
+      font-weight: 900;
+      color: #0b406e;
+      line-height: 1.2;
+    }
+    .brand-text .branch {
+      position: relative;
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: #0284c7;
+      display: inline-block;
+      margin: 4px 0 6px 0;
+    }
+    .brand-text .branch::before,
+    .brand-text .branch::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 40px;
+      height: 2px;
+      background: #38bdf8;
+    }
+    .brand-text .branch::before { right: -50px; }
+    .brand-text .branch::after { left: -50px; }
+    .brand-text .slogan {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #1e3a5f;
+    }
+
+    .contact-info {
+      text-align: right;
+    }
+    .phone-item {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 8px;
+      color: #073b68;
+      font-size: 1.35rem;
+      font-weight: 900;
+      direction: ltr;
+      text-decoration: none;
+    }
+    .phone-item i {
+      color: #0284c7;
+    }
+    .location-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      color: #335372;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-top: 4px;
+      line-height: 1.4;
+    }
+    .location-item i {
+      color: #0284c7;
+      margin-top: 3px;
+    }
+
+    /* Main Content Layout */
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 6%;
+      position: relative;
+      z-index: 10;
+      gap: 30px;
+    }
+
+    /* Left decorative element */
+    .left-decor {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .microscope-illustration {
+      max-width: 380px;
+      width: 100%;
+      filter: drop-shadow(0 15px 25px rgba(2, 132, 199, 0.2));
+      animation: float 4s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    /* Booking Card */
+    .card-wrapper {
+      flex: 1.1;
+      max-width: 520px;
+      width: 100%;
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 34px 28px;
+      box-shadow: 0 15px 45px rgba(11, 64, 110, 0.12);
+      border: 1px solid rgba(186, 230, 253, 0.6);
+      text-align: center;
+    }
+    .card-title {
+      font-size: 1.45rem;
+      font-weight: 900;
+      color: #073b68;
+      margin-bottom: 6px;
+    }
+    .card-subtitle {
+      font-size: 0.95rem;
+      color: #0284c7;
+      font-weight: 700;
+      margin-bottom: 26px;
+    }
+    .form-group {
+      margin-bottom: 14px;
+      position: relative;
+    }
+    .input-box {
+      width: 100%;
+      background: #f8fafc;
+      border: 1.5px solid #dbeafe;
+      border-radius: 14px;
+      padding: 12px 48px 12px 18px;
+      font-size: 0.95rem;
+      color: #1e3a5f;
+      font-weight: 600;
+      outline: none;
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+    .input-box:focus {
+      border-color: #0284c7;
+      background: #ffffff;
+      box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+    }
+    .input-icon {
+      position: absolute;
+      right: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #0284c7;
+      font-size: 1.15rem;
+      pointer-events: none;
+    }
+    .select-arrow {
+      position: absolute;
+      left: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #94a3b8;
+      font-size: 0.85rem;
+      pointer-events: none;
+    }
+    select.input-box {
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: 15px;
+      background: linear-gradient(135deg, #093c66 0%, #03528b 100%);
+      border: none;
+      border-radius: 14px;
+      color: #ffffff;
+      font-size: 1.1rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      box-shadow: 0 8px 20px rgba(9, 60, 102, 0.3);
+      transition: all 0.25s ease;
+      margin-top: 20px;
+    }
+    .btn-submit:hover {
+      background: linear-gradient(135deg, #022b4d 0%, #0861a1 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 26px rgba(9, 60, 102, 0.4);
+    }
+    .view-all-tests {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 18px;
+      color: #0284c7;
+      font-size: 0.9rem;
+      font-weight: 800;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .view-all-tests:hover {
+      color: #0369a1;
+      text-decoration: underline;
+    }
+
+    /* Right Features Column */
+    .features-list {
+      flex: 0.85;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .feature-icon-wrapper {
+      width: 58px;
+      height: 58px;
+      border-radius: 18px;
+      background: #e0f2fe;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #0284c7;
+      font-size: 1.5rem;
+      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.12);
+      flex-shrink: 0;
+    }
+    .feature-text h3 {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #083b63;
+      margin-bottom: 2px;
+    }
+    .feature-text p {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #557593;
+    }
+
+    /* Bottom Banner Wave */
+    .bottom-wave {
+      position: relative;
+      margin-top: 20px;
+      background: linear-gradient(135deg, #0284c7 0%, #06406d 100%);
+      padding: 16px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #ffffff;
+      border-top-left-radius: 40px;
+      border-top-right-radius: 40px;
+    }
+    .footer-slogan {
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+    }
+    .footer-pulse {
+      font-size: 1.6rem;
+      opacity: 0.85;
+    }
+
+    /* Success Toast */
+    #successModal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(4px);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal-box {
+      background: #fff;
+      border-radius: 20px;
+      padding: 30px;
+      text-align: center;
+      max-width: 400px;
+      width: 100%;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+    }
+    .modal-box i {
+      font-size: 3.5rem;
+      color: #10b981;
+      margin-bottom: 15px;
+    }
+    .modal-box h4 {
+      color: #073b68;
+      font-size: 1.3rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    .modal-box p {
+      color: #64748b;
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+    }
+    .modal-btn {
+      padding: 10px 24px;
+      background: #0284c7;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      main {
+        flex-direction: column;
+        align-items: center;
+      }
+      .left-decor {
+        display: none;
+      }
+      .features-list {
+        width: 100%;
+        max-width: 500px;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        margin-top: 20px;
+      }
+      header {
+        flex-direction: column;
+        text-align: center;
+      }
+      .contact-info {
+        text-align: center;
+      }
+      .phone-item {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation & Laboratory Identity -->
+  <header>
+    <div class="motto-box">
+      <span>صحتك تهمنا</span>
+      <i class="fa-solid fa-heart-pulse heart-icon"></i>
+    </div>
+
+    <div class="brand-center">
+      <img src="masr-labs-logo.jpg" alt="شعار معمل مصر" class="brand-logo" onerror="this.onerror=null; this.src='https://via.placeholder.com/80?text=Labs';">
+      <div class="brand-text">
+        <h1>معمل مصر للتحاليل الطبية</h1>
+        <div class="branch">شربين</div>
+        <div class="slogan">دقة في النتائج .. ثقة في التشخيص</div>
+      </div>
+    </div>
+
+    <div class="contact-info">
+      <a href="tel:01066640883" class="phone-item">
+        <i class="fa-solid fa-phone"></i>
+        <span>01066640883</span>
+      </a>
+      <div class="location-item">
+        <i class="fa-solid fa-location-dot"></i>
+        <div>
+          شربين خلف المستشفى العام<br>
+          برج الأطباء الدور التاسع<br>
+          أعلى مستشفى المنال
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Booking Layout -->
+  <main>
+    <!-- Left Decorative Graphic (Microscope theme) -->
+    <div class="left-decor">
+      <svg class="microscope-illustration" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="200" cy="200" r="170" fill="#e0f2fe" opacity="0.6"/>
+        <circle cx="200" cy="200" r="130" fill="#bae6fd" opacity="0.8"/>
+        <!-- Microscope Stylized SVG -->
+        <path d="M140 320H260C265 320 270 325 270 330V335C270 340 265 345 260 345H140C135 345 130 340 130 335V330C130 325 135 320 140 320Z" fill="#0b406e"/>
+        <path d="M190 280H210V320H190V280Z" fill="#0284c7"/>
+        <circle cx="200" cy="260" r="45" fill="#0b406e"/>
+        <path d="M200 130C230 130 250 150 250 185C250 220 230 250 200 250" stroke="#0284c7" stroke-width="20" stroke-linecap="round"/>
+        <rect x="150" y="100" width="30" height="90" rx="6" transform="rotate(-30 150 100)" fill="#0b406e"/>
+        <rect x="145" y="70" width="40" height="30" rx="4" transform="rotate(-30 145 70)" fill="#38bdf8"/>
+        <rect x="185" y="160" width="20" height="35" rx="3" transform="rotate(-30 185 160)" fill="#38bdf8"/>
+        <rect x="150" y="240" width="90" height="12" rx="4" fill="#0369a1"/>
+        <!-- Test Tubes -->
+        <rect x="110" y="260" width="12" height="45" rx="6" fill="#ef4444" opacity="0.85"/>
+        <rect x="126" y="250" width="12" height="55" rx="6" fill="#0284c7" opacity="0.85"/>
+        <rect x="94" y="265" width="12" height="40" rx="6" fill="#10b981" opacity="0.85"/>
+      </svg>
+    </div>
+
+    <!-- Booking Card -->
+    <div class="card-wrapper">
+      <h2 class="card-title">مرحباً بك في معمل مصر للتحاليل الطبية</h2>
+      <p class="card-subtitle">احجز تحاليلك بسهولة وسرعة</p>
+
+      <form id="bookingForm" onsubmit="handleBooking(event)">
+        <!-- Test Selection -->
+        <div class="form-group">
+          <i class="fa-solid fa-flask input-icon"></i>
+          <i class="fa-solid fa-chevron-down select-arrow"></i>
+          <select class="input-box" required>
+            <option value="" disabled selected>اختر التحاليل المطلوبة</option>
+            <option value="cbc">صورة دم كاملة (CBC)</option>
+            <option value="sugar">تحليل سكر تراكمي (HbA1c)</option>
+            <option value="lipid">تحاليل دهون وكوليسترول كاملة</option>
+            <option value="liver">وظائف كبد (Liver Function Tests)</option>
+            <option value="kidney">وظائف كلى (Kidney Function Tests)</option>
+            <option value="thyroid">تحاليل غدة درقية (TSH, Free T3, T4)</option>
+            <option value="vitamin_d">فيتامين د (Vitamin D)</option>
+            <option value="all">فحص شامل (Comprehensive Checkup)</option>
+          </select>
+        </div>
+
+        <!-- Date Selection -->
+        <div class="form-group">
+          <i class="fa-regular fa-calendar-days input-icon"></i>
+          <i class="fa-solid fa-chevron-down select-arrow"></i>
+          <input type="date" class="input-box" required>
+        </div>
+
+        <!-- Time Selection -->
+        <div class="form-group">
+          <i class="fa-regular fa-clock input-icon"></i>
+          <i class="fa-solid fa-chevron-down select-arrow"></i>
+          <select class="input-box" required>
+            <option value="" disabled selected>اختر الوقت المناسب</option>
+            <option value="09:00 AM">09:00 صباحاً - 11:00 صباحاً</option>
+            <option value="11:00 AM">11:00 صباحاً - 01:00 ظهراً</option>
+            <option value="01:00 PM">01:00 ظهراً - 04:00 عصراً</option>
+            <option value="04:00 PM">04:00 عصراً - 07:00 مساءً</option>
+            <option value="07:00 PM">07:00 مساءً - 11:00 مساءً</option>
+          </select>
+        </div>
+
+        <!-- Patient Info -->
+        <div class="form-group">
+          <i class="fa-regular fa-user input-icon"></i>
+          <input type="text" class="input-box" placeholder="اسم المريض ورقم الهاتف" required>
+        </div>
+
+        <button type="submit" class="btn-submit">
+          <i class="fa-solid fa-calendar-check"></i>
+          <span>احجز الآن</span>
+        </button>
+      </form>
+
+      <a href="#tests" class="view-all-tests">
+        <i class="fa-solid fa-list-check"></i>
+        <span>عرض جميع التحاليل المتاحة</span>
+      </a>
+    </div>
+
+    <!-- Right Features List -->
+    <div class="features-list">
+      <div class="feature-item">
+        <div class="feature-icon-wrapper">
+          <i class="fa-solid fa-shield-halved"></i>
+        </div>
+        <div class="feature-text">
+          <h3>دقة عالية</h3>
+          <p>نتائج موثوقة ومعتمدة</p>
+        </div>
+      </div>
+
+      <div class="feature-item">
+        <div class="feature-icon-wrapper">
+          <i class="fa-solid fa-bolt"></i>
+        </div>
+        <div class="feature-text">
+          <h3>سرعة في التسليم</h3>
+          <p>نتائجك في الوقت المحدد</p>
+        </div>
+      </div>
+
+      <div class="feature-item">
+        <div class="feature-icon-wrapper">
+          <i class="fa-solid fa-heart"></i>
+        </div>
+        <div class="feature-text">
+          <h3>رعاية متميزة</h3>
+          <p>فريق طبي متخصص</p>
+        </div>
+      </div>
+
+      <div class="feature-item">
+        <div class="feature-icon-wrapper">
+          <i class="fa-solid fa-vial"></i>
+        </div>
+        <div class="feature-text">
+          <h3>أحدث الأجهزة</h3>
+          <p>تقنيات حديثة في التحليل</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Bottom Wave Ribbon -->
+  <div class="bottom-wave">
+    <div class="footer-slogan">
+      معمل مصر ... اختيارك الأفضل
+    </div>
+    <div class="footer-pulse">
+      <i class="fa-solid fa-heart-pulse"></i>
+    </div>
+  </div>
+
+  <!-- Booking Confirmation Modal -->
+  <div id="successModal">
+    <div class="modal-box">
+      <i class="fa-solid fa-circle-check"></i>
+      <h4>تم تسجيل طلب الحجز بنجاح</h4>
+      <p>شكراً لثقتكم بمعمل مصر للتحاليل الطبية. سيتواصل معكم فريقنا لتأكيد الموعد.</p>
+      <button class="modal-btn" onclick="closeModal()">حسناً</button>
+    </div>
+  </div>
+
+  <script>
+    function handleBooking(e) {
+      e.preventDefault();
+      document.getElementById('successModal').style.display = 'flex';
+      e.target.reset();
+    }
+    function closeModal() {
+      document.getElementById('successModal').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
